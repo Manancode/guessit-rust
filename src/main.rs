@@ -2,9 +2,9 @@ use std::{cmp::Ordering, io};
 use rand::Rng;
 
 fn main() {
-    let secret_number = rand::thread_rng().gen_range(1..=100);
+    loop {
+        let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("the secret number is {}" , secret_number);
     println!("Guess the number : ");
 
     let mut guess = String::new();
@@ -16,7 +16,8 @@ fn main() {
 
     match guess.cmp(&secret_number){
         Ordering::Less => println!("too small"),
-        Ordering::Equal => println!("you won"),
+        Ordering::Equal => {println!("you won") ; break ;},
         Ordering::Greater => println!("too big"),
+    }
     }
 }
